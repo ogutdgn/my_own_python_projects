@@ -2,17 +2,22 @@ import random
 
 set = ["-","+","*","/"]
 can_divide = []
-
+non_primes = []
 
 num1 = int
 num2 = int
 num3 = int
 
-# process = random.choice(process)
-# num1 = random.randint(1,101)
-# num2 = random.randint(1,51)
-
-
+upper = int(input("Wich range do you want to try : "))
+for i in range(1,upper + 1):
+    non_primes.append(i)
+for num in range(1,upper + 1):
+    if num > 1:
+        for i in range(2,num):
+            if num % i == 0:
+                break
+        else:
+            non_primes.remove(num)
 
 def processes(num1,num2,process):
     points = 0
@@ -69,15 +74,14 @@ def processes(num1,num2,process):
 
 while True:
     process = random.choice(set) 
-    num1 = random.randint(1,101)
-    num2 = random.randint(1,51)
+    num1 = random.choice(non_primes)
+    num2 = random.choice(non_primes)
     
     processes(num1,num2,process)
     a = input("press q to quit, prees enter to contunie\n")
     if a == "q":
         print("See you next time")
         break
-
 
 
 
