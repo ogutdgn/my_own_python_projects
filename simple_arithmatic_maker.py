@@ -107,15 +107,4 @@ while chance > 0:
             chance -= 1
             points -= 2
             print("Your points : {}\nYou have {} chances left".format(points,chance))
-        
-        
-        
-
-
-
-
-
-
-
-
-
+            
