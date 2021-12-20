@@ -5,7 +5,7 @@ non_primes = []
 
 chance = 3
 points = 0
-
+print("Hi! This is a game that makes randomly question. You can press p to pass, press q to quit out the program")
 for num in range(1,101):
     non_primes.append(num)
     if num > 1:
@@ -30,7 +30,8 @@ while chance > 0:
         elif admin_input == "p":
             print("You passed the question.")
             pass
-
+        elif admin_input == "point":
+            print("Your points : ",points)
         elif admin_input == "q":
             print("Total Point : ",points)
             break
@@ -49,7 +50,8 @@ while chance > 0:
         elif admin_input == "p":
             print("You passed the question.")
             pass
-
+        elif admin_input == "point":
+            print("Your points : ",points)
         elif admin_input == "q":
             print("Total Point : ",points)
             break
@@ -68,7 +70,8 @@ while chance > 0:
         elif admin_input == "p":
             print("You passed the question.")
             pass
-
+        elif admin_input == "point":
+            print("Your points : ",points)
         elif admin_input == "q":
             print("Total Point : ",points)
             break
@@ -80,7 +83,6 @@ while chance > 0:
     if process == "/":
         can_divide = []
         num3 = random.choice(non_primes)
-        print(num3)
         for i in range(1,51):
             if num3 % i == 0:
                 can_divide.append(i)
@@ -95,7 +97,8 @@ while chance > 0:
         elif admin_input == "p":
             print("You passed the question.")
             pass
-
+        elif admin_input == "point":
+            print("Your points : ",points)
         elif admin_input == "q":
             print("Total Point : ",points)
             break
