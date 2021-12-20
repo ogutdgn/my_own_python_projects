@@ -1,17 +1,13 @@
 import random
 
-set = ["-","+","*","/"]
-can_divide = []
+processes = ["+","-","*","/"]
 non_primes = []
 
-num1 = int
-num2 = int
-num3 = int
+chance = 3
+points = 0
 
-upper = int(input("Wich range do you want to try : "))
-for i in range(1,upper + 1):
-    non_primes.append(i)
-for num in range(1,upper + 1):
+for num in range(1,101):
+    non_primes.append(num)
     if num > 1:
         for i in range(2,num):
             if num % i == 0:
@@ -19,69 +15,100 @@ for num in range(1,upper + 1):
         else:
             non_primes.remove(num)
 
-def processes(num1,num2,process):
-    points = 0
-    if process == "+":
-        print("What is the value of {} + {}".format(num1,num2))
-        admin_input = input("Enter your result : ")
-        if int(admin_input) == num1 + num2:
-            print("You had 5 points!")
-            points += 5
-        else:
-            print("You lost 2 points :(")
-            points -= 2
-    if process == "-":
-        print("What is the value of {} - {}".format(num1,num2))
-        admin_input = input("Enter your result : ")
-        if int(admin_input) == num1 - num2:
-            print("You had 5 points!")
-            points += 5
-        else:
-            print("You lost 2 points :(")
-            points -= 2
-    if process == "*":
-        print("What is the value of {} * {}".format(num1,num2))
-        admin_input = input("Enter your result : ")
-        if int(admin_input) == num1 * num2:
-            print("You had 5 points!")
-            points += 5
-        else:
-            print("You lost 2 points :(")
-            points -= 2
-    if process == "/":
-        if num1 % num2 == 0:
-            print("What is the value of {} / {}".format(num1,num2))
-            admin_input = input("Enter your result : ")
-            if int(admin_input) == num1 + num2:
-                print("You had 5 points!")
-                points += 5
-            else:
-                print("You lost 2 points :(")
-                points -= 2
-        else:
-            for i in range(1,51):
-                if num1 % i == 0:
-                    can_divide.append(i)
-            num3 = random.choice(can_divide)
-            print("What is the value of {} / {}".format(num1,num3))
-            admin_input = input("Enter your result : ")
-            if int(admin_input) == num1 / num3:
-                print("You had 5 points!")
-                points += 5
-            else:
-                print("You lost 2 points :(")
-                points -= 2
+while chance > 0:
+    num1 = random.randint(1,101)
+    num2 = random.randint(1,51)
+    process = random.choice(processes)
 
-while True:
-    process = random.choice(set) 
-    num1 = random.choice(non_primes)
-    num2 = random.choice(non_primes)
-    
-    processes(num1,num2,process)
-    a = input("press q to quit, prees enter to contunie\n")
-    if a == "q":
-        print("See you next time")
-        break
+    if process == "+":
+        print("\n\n{} + {} ".format(num1,num2))
+        admin_input = input("Answer : ")
+        if admin_input == str(num1 + num2):
+            points += 5
+            print("\nYour points : ",points)
+
+        elif admin_input == "p":
+            print("You passed the question.")
+            pass
+
+        elif admin_input == "q":
+            print("Total Point : ",points)
+            break
+        else:
+            print("Your answer is false.Truth was ",num1+num2)
+            chance -= 1
+            points -= 2
+            print("Your points : {}\nYou have {} chances left".format(points,chance))
+    if process == "-":
+        print("\n\n{} - {} ".format(num1,num2))
+        admin_input = input("Answer : ")
+        if admin_input == str(num1 - num2):
+            points += 5
+            print("\nYour points : ",points)
+
+        elif admin_input == "p":
+            print("You passed the question.")
+            pass
+
+        elif admin_input == "q":
+            print("Total Point : ",points)
+            break
+        else:
+            print("Your answer is false.Truth was ",num1-num2)
+            chance -= 1
+            points -= 2
+            print("Your points : {}\nYou have {} chances left".format(points,chance))
+    if process == "*":
+        print("\n\n{} * {} ".format(num1,num2))
+        admin_input = input("Answer : ")
+        if admin_input == str(num1 * num2):
+            points += 5
+            print("\nYour points : ",points)
+
+        elif admin_input == "p":
+            print("You passed the question.")
+            pass
+
+        elif admin_input == "q":
+            print("Total Point : ",points)
+            break
+        else:
+            print("Your answer is false.Truth was ",num1*num2)
+            chance -= 1
+            points -= 2
+            print("Your points : {}\nYou have {} chances left".format(points,chance))
+    if process == "/":
+        can_divide = []
+        num3 = random.choice(non_primes)
+        print(num3)
+        for i in range(1,51):
+            if num3 % i == 0:
+                can_divide.append(i)
+        num4 = random.choice(can_divide)
+
+        print("\n\n{} / {} ".format(num3,num4))
+        admin_input = input("Answer : ")
+        if admin_input == str(int(num3 / num4)):
+            points += 5
+            print("\nYour points : ",points)
+
+        elif admin_input == "p":
+            print("You passed the question.")
+            pass
+
+        elif admin_input == "q":
+            print("Total Point : ",points)
+            break
+        else:
+            print("Your answer is false.Truth was ",num3/num4)
+            chance -= 1
+            points -= 2
+            print("Your points : {}\nYou have {} chances left".format(points,chance))
+        
+        
+        
+
+
 
 
 
